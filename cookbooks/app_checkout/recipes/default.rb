@@ -6,8 +6,9 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-git "/www" do
+git "/home/vagrant/workspace/" do
 	repository "https://github.com/Jimmeh/node_example.git"
 	reference "master"
 	action "sync"
+	user "vagrant"
 end
