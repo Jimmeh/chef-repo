@@ -16,6 +16,7 @@ Vagrant.configure("2") do |config|
       chef.add_recipe("apt")
       chef.add_recipe("nginx")
       chef.add_recipe("nodejs")
+	  chef.add_recipe("git")
     end
   end
 
