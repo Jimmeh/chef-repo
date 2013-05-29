@@ -9,6 +9,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "debian-x64"
   config.vm.define :dev do |dev_config|
+	dev_config.vm.network :forwarded_port, guest: 80, host: 4567
     config.vm.provision :shell, :inline => "curl -L https://www.opscode.com/chef/install.sh | bash"
     config.vm.provision :chef_solo do |chef|
       chef.node_name = "dev_vm"
