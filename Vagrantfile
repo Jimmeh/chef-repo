@@ -8,20 +8,14 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "debian-x64"
-  #config.vm.synced_folder "#{ENV['HOME']}/key-share", "/mnt/key-share", :nfs => false
   config.vm.define :dev do |dev_config|
     config.vm.provision :shell, :inline => "curl -L https://www.opscode.com/chef/install.sh | bash"
     config.vm.provision :chef_solo do |chef|
-      #chef.chef_server_url = "https://api.opscode.com/organizations/tlrgtest"
-      #chef.validation_key_path = "~/key-share/tlrgtest-validator.pem"
-      #chef.validation_client_name = "tlrgtest-validator"
-      #chef.client_key_path = "/mnt/key-share/jimmeh.pem"
       chef.node_name = "dev_vm"
 	  chef.cookbooks_path = "cookbooks"
       chef.add_recipe("apt")
-      #chef.add_recipe("networking_basic")
       chef.add_recipe("nginx")
-      #chef.add_recipe("nodejs")
+      chef.add_recipe("nodejs")
     end
   end
 
