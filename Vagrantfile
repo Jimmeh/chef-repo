@@ -8,6 +8,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "debian-x64"
+  config.vm.box_url = "http://www.emken.biz/vagrant-boxes/debsqueeze64.box"
   config.vm.define :dev do |dev_config|
 	dev_config.vm.network :forwarded_port, guest: 80, host: 4567
     config.vm.provision :shell, :inline => "curl -L https://www.opscode.com/chef/install.sh | bash"
